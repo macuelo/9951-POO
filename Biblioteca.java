@@ -1,23 +1,25 @@
 
 package modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Biblioteca {
+    private int id;
     private int idUsuario;
-    private List<Juego> juegos;
+    private int idJuego;
 
-    public Biblioteca(int idUsuario) {
+    public Biblioteca() {}
+
+    public Biblioteca(int idUsuario, int idJuego) {
         this.idUsuario = idUsuario;
-        this.juegos = new ArrayList<>();
+        this.idJuego = idJuego;
     }
 
-    public void agregarJuego(Juego juego) {
-        juegos.add(juego);
-    }
+    // Getters y setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public List<Juego> getJuegos() {
-        return juegos;
-    }
+    public int getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+
+    public int getIdJuego() { return idJuego; }
+    public void setIdJuego(int idJuego) { this.idJuego = idJuego; }
 }

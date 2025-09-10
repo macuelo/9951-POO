@@ -5,21 +5,31 @@ public class Juego {
     private int id;
     private String titulo;
     private String genero;
-    private int descargas;
     private double rating;
+    private int descargas;
 
-    public Juego(int id, String titulo, String genero, int descargas, double rating) {
-        this.id = id;
+    public Juego() {}
+
+    public Juego(String titulo, String genero, double rating, int descargas) {
         this.titulo = titulo;
         this.genero = genero;
-        this.descargas = descargas;
         this.rating = rating;
+        this.descargas = descargas;
     }
 
+    // Getters y setters
     public int getId() { return id; }
-    public String getTitulo() { return titulo; }
+    public void setId(int id) { this.id = id; }
+
+    public String getNombre() { return titulo; }
+    public void setNombre(String nombre) { this.titulo = nombre; }
+
     public String getGenero() { return genero; }
-    public int getDescargas() { return descargas; }
+    public void setGenero(String genero) { this.genero = genero; }
+
     public double getRating() { return rating; }
-    
+    public void setRating(double rating) { this.rating = rating; }
+
+    public int getDescargas() { return descargas; }
+    public void setDescargas(int descargas) { this.descargas = descargas; }
 }
