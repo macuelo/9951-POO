@@ -29,4 +29,36 @@ public class Usuario {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    
+    public abstract class usuario{
+    protected String nombre;
+    protected String correo;
+
+    public usuario(String nombre, String correo) {
+        this.nombre = nombre;
+        this.correo = correo;
+    }
+
+    public String getNombre() { return nombre; }
+    public String getCorreo() { return correo; }
+
+    
+    public abstract void mostrarPerfil();
+}
+    
+    public class Administrador extends usuario {
+    private int permisos;
+
+    public Administrador(String nombre, String correo, int permisos) {
+        super(nombre, correo);
+        this.permisos = permisos;
+    }
+
+    @Override
+    public void mostrarPerfil() {
+        System.out.println("Administrador: " + nombre + ", correo: " + correo +
+                           ", nivel permisos: " + permisos);
+    }
+    
+    }   
 }
