@@ -1,10 +1,8 @@
 
-package modelo;
-
-
+package hashtale;
 
 public class Usuario {
-    private int id;
+ private int id;
     private String nombre;
     private String correo;
     private String password;
@@ -29,6 +27,8 @@ public class Usuario {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    
+    
     
     public abstract class usuario{
     protected String nombre;
@@ -61,4 +61,24 @@ public class Usuario {
     }
     
     }   
-}
+    
+    public class Jugador extends Usuario {
+        private int horas;
+    
+    public Jugador(String nombre,String correo, String password){
+        super (nombre, correo, password);
+        this.horas = horas;
+    }
+        public int gethoras(){return horas;}
+    
+    @Override
+        public void mostrarPerfil(){
+            System.out.println("Jugador"+ nombre + ", correo: " + correo + "horas"+horas);
+        }
+    
+    }
+    
+
+    
+    
+} 

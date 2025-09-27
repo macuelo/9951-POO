@@ -1,5 +1,4 @@
-
-package modelo;
+package hashtale;
 
 public class Juego {
     private int id;
@@ -7,8 +6,6 @@ public class Juego {
     private String genero;
     private double rating;
     private int descargas;
-
-    public Juego() {}
 
     public Juego(String titulo, String genero, double rating, int descargas) {
         this.titulo = titulo;
@@ -32,4 +29,26 @@ public class Juego {
 
     public int getDescargas() { return descargas; }
     public void setDescargas(int descargas) { this.descargas = descargas; }
+
+    public class juegogratis extends Juego {
+    public juegogratis(String nombre, String genero){
+            super(nombre, genero);
+    }
+    @Override
+    public void mostrarInfo(){
+        System.out.println("");
+    } 
+    }
+    
+    public class juegoPago extends Juego{
+    public juegoPago (String nombre, double precio, String genero){
+        super(nombre,precio,genero);
+        }
+    @Override
+    public void mostrarInfo(){
+        System.out.println(""+"");
+    }
+    }
+    
+    
 }
