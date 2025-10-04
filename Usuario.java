@@ -1,6 +1,6 @@
 
-package hashtale;
-
+package Modelo;
+import interfaces.Usuario;
 public class Usuario {
  private int id;
     private String nombre;
@@ -77,8 +77,55 @@ public class Usuario {
         }
     
     }
-    
 
-    
+
+    public class Administrador implements Usuario {
+        private String nombre;
+        private String correo;
+        private int nivelPermisos;
+
+    public Administrador(String nombre, String correo, int nivelPermisos) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.nivelPermisos = nivelPermisos;
+    }
+
+        @Override
+            public String getNombre() { return nombre; }
+
+        @Override
+            public String getCorreo() { return correo; }
+
+            public int getNivelPermisos() { return nivelPermisos; }
+
+        @Override
+            public void mostrarPerfil() {
+            System.out.println("🛠️ Administrador: " + nombre + " | Correo: " + correo + " | Nivel de permisos: " + nivelPermisos);
+            }
+        
+    public class Jugador implements Usuario {
+        private String nombre;
+        private String correo;
+        private int horasJugadas;
+
+    public Jugador(String nombre, String correo, int horasJugadas) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.horasJugadas = horasJugadas;
+    }
+
+        @Override
+        public String getNombre() { return nombre; }
+
+        @Override
+        public String getCorreo() { return correo; }
+
+        public int getHorasJugadas() { return horasJugadas; }
+
+        @Override
+        public void mostrarPerfil() {
+            System.out.println("👤 Jugador: " + nombre + " | Correo: " + correo +" | Horas jugadas: " + horasJugadas);
+        }
+}   
     
 } 
