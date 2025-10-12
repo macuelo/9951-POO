@@ -1,0 +1,122 @@
+@startuml
+skinparam rectangle {
+    BackgroundColor<<interface>> LightYellow
+    BackgroundColor<<abstract>> LightBlue
+}
+
+package "modelo.Usuario" {
+    interface UsuarioInterfaz {
+        + mostrarPerfil()
+        + getNombre(): String
+        + getCorreo(): String
+    }
+
+    abstract class UsuarioBase {
+        - id: int
+        - nombre: String
+        - correo: String
+        - password: String
+        + getId(): int
+        + getNombre(): String
+        + getCorreo(): String
+        + getPassword(): String
+        + setPassword(String)
+        + mostrarPerfil(): void
+    }
+
+    class Jugador {
+        + mostrarPerfil()
+    }
+
+    class Administrador {
+        - permisos: int
+        + mostrarPerfil()
+        + gestionarJuegos()
+    }
+}
+
+package "modelo.Juego" {
+    interface JuegoInterfaz {
+        + mostrarInfo()
+        + getNombre(): String
+        + getRating(): double
+        + esGratis(): boolean
+    }
+
+    abstract class JuegoBase {
+        - id: int
+        - nombre: String
+        - genero: String
+        - rating: double
+        - descargas: int
+        + getId(): int
+        + getNombre(): String
+        + getGenero(): String
+        + getRating(): double
+        + getDescargas(): int
+        + setRating(double)
+        + setDescargas(int)
+        + mostrarInfo(): void
+        + esGratis(): boolean
+    }
+
+    class JuegoCompleto {
+        - precio: double
+        + esGratis(): boolean
+        + mostrarInfo()
+        + getPrecio(): double
+    }
+
+    class Demo {
+        - duracionMinutos: int
+        + esGratis(): boolean
+        + mostrarInfo()
+        + getDuracionMinutos(): int
+    }
+
+    class DLC {
+        - idJuegoPrincipal: int
+        - precio: double
+        + esGratis(): boolean
+        + mostrarInfo()
+        + getIdJuegoPrincipal(): int
+    }
+}
+
+package "modelo.Resena" {
+    class Resena {
+        - id: int
+        - idUsuario: int
+        - idJuego: int
+        - comentario: String
+        - rating: int
+        - tipo: String
+        - spoiler: boolean
+        + getId(): int
+        + getIdUsuario(): int
+        + getIdJuego(): int
+        + getComentario(): String
+        + getRating(): int
+        + getTipo(): String
+        + esVerificada(): boolean
+        + setSpoiler(boolean)
+    }
+}
+
+' Herencia
+UsuarioBase <|-- Jugador
+UsuarioBase <|-- Administrador
+JuegoBase <|-- JuegoCompleto
+JuegoBase <|-- Demo
+JuegoBase <|-- DLC
+
+' Interfaces
+UsuarioInterfaz <|.. UsuarioBase
+JuegoInterfaz <|.. JuegoBase
+
+' Asociaciones
+Resena "1" --> "1" UsuarioBase : idUsuario
+Resena "1" --> "1" JuegoBase : idJuego
+DLC "1" --> "1" JuegoBase : idJuegoPadre
+
+@enduml
