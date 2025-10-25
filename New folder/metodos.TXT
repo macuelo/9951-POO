@@ -1,0 +1,25 @@
+agregarJuego() 
+
+actualizarJuego() 
+
+eliminarJuego() 
+
+buscarPorGenero(String genero) 
+
+rankingPorDescargas()
+
+rankingPorRating() 
+
+🔹 Clase Biblioteca
+
+agregarJuego(Usuario u, Juego j) 
+eliminarJuego(Usuario u, Juego j) 
+listarBiblioteca(Usuario u) 
+contarJuegos(Usuario u) 
+
+🔹 Clase Reseña
+
+agregarReseña(Usuario u, Juego j, String texto, int rating) 
+eliminarReseña(int idReseña) 
+listarReseñasPorJuego(Juego j)
+calcularPromedioRating(Juego j) 

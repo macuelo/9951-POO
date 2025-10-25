@@ -1,0 +1,34 @@
+@startuml
+class Usuario {
+    - id: int
+    - nombre: String
+    - correo: String
+    - password: String
+}
+
+class Juego {
+    - id: int
+    - titulo: String
+    - genero: String
+    - descargas: int
+    - rating: double
+}
+
+class Reseña {
+    - id: int
+    - comentario: String
+    - puntuacion: int
+}
+
+class Biblioteca {
+    - juegos: List<Juego>
+    +agregarJuego()
+    +listarJuegos()
+}
+
+Usuario "1" -- "1" Biblioteca
+Usuario "1" -- "0..*" Reseña
+Juego "1" -- "0..*" Reseña
+Biblioteca "1" -- "0..*" Juego
+
+@enduml

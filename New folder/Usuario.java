@@ -1,0 +1,131 @@
+
+package Modelo;
+import interfaces.Usuario;
+public class Usuario {
+ private int id;
+    private String nombre;
+    private String correo;
+    private String password;
+
+    public Usuario() {}
+
+    public Usuario(String nombre, String correo, String password) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.password = password;
+    }
+
+    // Getters y setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+
+    public String getCorreo() { return correo; }
+    public void setCorreo(String correo) { this.correo = correo; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    
+    
+    
+    public abstract class usuario{
+    protected String nombre;
+    protected String correo;
+
+    public usuario(String nombre, String correo) {
+        this.nombre = nombre;
+        this.correo = correo;
+    }
+
+    public String getNombre() { return nombre; }
+    public String getCorreo() { return correo; }
+
+    
+    public abstract void mostrarPerfil();
+}
+    
+    public class Administrador extends usuario {
+    private int permisos;
+
+    public Administrador(String nombre, String correo, int permisos) {
+        super(nombre, correo);
+        this.permisos = permisos;
+    }
+
+    @Override
+    public void mostrarPerfil() {
+        System.out.println("Administrador: " + nombre + ", correo: " + correo +
+                           ", nivel permisos: " + permisos);
+    }
+    
+    }   
+    
+    public class Jugador extends Usuario {
+        private int horas;
+    
+    public Jugador(String nombre,String correo, String password){
+        super (nombre, correo, password);
+        this.horas = horas;
+    }
+        public int gethoras(){return horas;}
+    
+    @Override
+        public void mostrarPerfil(){
+            System.out.println("Jugador"+ nombre + ", correo: " + correo + "horas"+horas);
+        }
+    
+    }
+
+
+    public class Administrador implements Usuario {
+        private String nombre;
+        private String correo;
+        private int nivelPermisos;
+
+    public Administrador(String nombre, String correo, int nivelPermisos) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.nivelPermisos = nivelPermisos;
+    }
+
+        @Override
+            public String getNombre() { return nombre; }
+
+        @Override
+            public String getCorreo() { return correo; }
+
+            public int getNivelPermisos() { return nivelPermisos; }
+
+        @Override
+            public void mostrarPerfil() {
+            System.out.println("🛠️ Administrador: " + nombre + " | Correo: " + correo + " | Nivel de permisos: " + nivelPermisos);
+            }
+        
+    public class Jugador implements Usuario {
+        private String nombre;
+        private String correo;
+        private int horasJugadas;
+
+    public Jugador(String nombre, String correo, int horasJugadas) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.horasJugadas = horasJugadas;
+    }
+
+        @Override
+        public String getNombre() { return nombre; }
+
+        @Override
+        public String getCorreo() { return correo; }
+
+        public int getHorasJugadas() { return horasJugadas; }
+
+        @Override
+        public void mostrarPerfil() {
+            System.out.println("👤 Jugador: " + nombre + " | Correo: " + correo +" | Horas jugadas: " + horasJugadas);
+        }
+}   
+    
+} 
