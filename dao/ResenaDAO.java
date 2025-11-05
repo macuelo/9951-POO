@@ -15,7 +15,7 @@ public class ResenaDAO {
         conn = ConexionBD.getConnection();
     }
 
-    // Insertar reseña
+  
     public void agregarReseña(Resena r) throws SQLException {
         String sql = "INSERT INTO reseñas (id_usuario, id_juego, comentario, rating) VALUES (?, ?, ?, ?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
@@ -26,7 +26,7 @@ public class ResenaDAO {
         stmt.executeUpdate();
     }
 
-    // Listar reseñas de un juego
+   
     public List<Resena> listarReseñasPorJuego(int idJuego) throws SQLException {
         List<Resena> lista = new ArrayList<>();
         String sql = "SELECT * FROM reseñas WHERE id_juego = ?";
