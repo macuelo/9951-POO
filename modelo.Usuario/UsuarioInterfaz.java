@@ -8,6 +8,7 @@ package modelo.Usuario;
 
 public interface UsuarioInterfaz {
     void mostrarPerfil();
+    int getId();
     String getNombre();
     String getCorreo();
 }

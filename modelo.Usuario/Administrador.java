@@ -1,6 +1,6 @@
 package modelo.Usuario;
 
-public class Administrador extends UsuarioBase {
+public class Administrador extends Usuario {
     private int nivelPermisos;
 
     public Administrador(int id, String nombre, String correo, String password, int nivelPermisos) {
@@ -10,11 +10,10 @@ public class Administrador extends UsuarioBase {
 
     @Override
     public void mostrarPerfil() {
-        System.out.println("🛡️ Administrador: " + nombre + 
-                          " | Permisos: " + nivelPermisos);
+        System.out.println("🛡️ Admin: " + nombre + " | Permisos: " + nivelPermisos);
     }
 
     public void gestionarJuegos() {
-        System.out.println("🔧 Gestionando catálogo de juegos...");
+        System.out.println("🔧 Gestionando catálogo...");
     }
 }
