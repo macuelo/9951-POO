@@ -1,0 +1,36 @@
+ //  Obtener todos los JUGADORES (sin casts manuales ni bucles)
+    public List<Jugador> obtenerTodosLosJugadores() {
+        return usuarioDAO.listarUsuarios().stream()
+                .filter(usuario -> usuario instanceof Jugador)
+                .map(usuario -> (Jugador) usuario)
+                .collect(Collectors.toList());
+    }
+
+    //  Obtener todos los ADMINISTRADORES
+    public List<Administrador> obtenerTodosLosAdministradores() {
+        return usuarioDAO.listarUsuarios().stream()
+                .filter(usuario -> usuario instanceof Administrador)
+                .map(usuario -> (Administrador) usuario)
+                .collect(Collectors.toList());
+    }
+
+    //  ¿Existe un administrador con permisos >= nivel requerido?
+    public boolean existeAdminConPermisos(int nivelRequerido) {
+        return usuarioDAO.listarUsuarios().stream()
+                .filter(usuario -> usuario instanceof Administrador)
+                .map(usuario -> (Administrador) usuario)
+                .anyMatch(admin -> admin.getNivelPermisos() >= nivelRequerido);
+    }
+
+    //  Buscar un usuario por correo (de forma segura, sin nulls explícitos)
+    public Optional<Usuario> buscarPorCorreo(String correo) {
+        return usuarioDAO.listarUsuarios().stream()
+                .filter(usuario -> correo.equals(usuario.getCorreo()))
+                .findFirst();
+    }
+
+    //  Obtener nombres de todos los usuarios (ej: para mostrar en UI)
+    public List<String> obtenerNombresDeUsuarios() {
+        return usuarioDAO.listarUsuarios().stream()
+                .map(Usuario::getNombre) 
+                .collect(Collectors.toList());
